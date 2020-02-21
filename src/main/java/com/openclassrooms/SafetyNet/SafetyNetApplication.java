@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class SafetyNetApplication {
 
 	public static void main(String[] args) {
+		ParseJson.Parse();
 		SpringApplication.run(SafetyNetApplication.class, args);
 	}
 
