@@ -15,11 +15,11 @@ public class ParseJson {
 	    	         	   
 	    	   CompositeModel Model = new ObjectMapper().readValue(new File("src/main/resources/data.json"), CompositeModel.class );
 	    	      	         
-	       } catch (FileNotFoundException e) {
-	        e.printStackTrace();
-	       } catch (IOException e) {
-	        e.printStackTrace();
-	       }                       
+	       	} catch (FileNotFoundException e) {
+	          e.printStackTrace();
+	       	} catch (IOException e) {
+	          e.printStackTrace();
+	       	}                       
 	    }
 
 }

@@ -1,5 +1,8 @@
 package com.openclassrooms.SafetyNet;
 
+import java.util.List;
+import java.util.Set;
+
 public class FirestationModel {
 	
 	private String address;
@@ -8,6 +11,11 @@ public class FirestationModel {
 	public FirestationModel() {
 		
 	}
+	
+	public PersonsModel  {}
+					
+
+						
 
 	public String getAddress() {
 		return address;

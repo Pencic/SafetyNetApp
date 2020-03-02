@@ -6,7 +6,7 @@ public class MedicalrecordsModel {
 	
 	private String firstName;
 	private String lastName;
-	private String birthdate;
+	private String birthDate;
 	private Set<String> medications;
 	private Set<String> allergies;
 	
@@ -28,10 +28,10 @@ public class MedicalrecordsModel {
 		this.lastName = lastName;
 	}
 	public String getBirthdate() {
-		return birthdate;
+		return birthDate;
 	}
 	public void setBirthdate(String birthdate) {
-		this.birthdate = birthdate;
+		this.birthDate = birthdate;
 	}
 	public Set<String> getMedications() {
 		return medications;

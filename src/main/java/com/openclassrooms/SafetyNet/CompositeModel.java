@@ -5,15 +5,15 @@ import java.util.List;
 
 public class CompositeModel {
 	
-	private List<PersonModel> persons;
+	private List<PersonsModel> persons;
 	private List<FirestationModel> firestations;
-	private List<MedicalrecordsModel> medicalrecords;
+	private static List<MedicalrecordsModel> medicalrecords;
 	
 	public CompositeModel() {
 		
 	}
 	
-	public List<String> getAdressesForStation(int station) {
+	public List<String> getAddressesForStation(int station) {
 		
 		if(getFirestations() == null)
 			return null;
@@ -30,11 +30,11 @@ public class CompositeModel {
 		return result;		
 	}
 
-	public List<PersonModel> getPersons() {
+	public List<PersonsModel> getPersons() {
 		return persons;
 	}
 
-	public void setPersons(List<PersonModel> persons) {
+	public void setPersons(List<PersonsModel> persons) {
 		this.persons = persons;
 	}
 
@@ -46,7 +46,7 @@ public class CompositeModel {
 		this.firestations = firestations;
 	}
 
-	public List<MedicalrecordsModel> getMedicalrecords() {
+	public static List<MedicalrecordsModel> getMedicalrecords() {
 		return medicalrecords;
 	}
 
