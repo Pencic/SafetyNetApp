@@ -2,6 +2,7 @@ package com.openclassrooms.SafetyNet;
 
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -22,14 +23,40 @@ public class PersonsModel {
 		
 		List<MedicalrecordsModel> allMedicalRecords = CompositeModel.getMedicalrecords(); 
 		
-		for(MedicalrecordsModel medicalrecord:allMedicalRecords) {
-			
-		if(medicalrecord.getFirstName().equals(this.firstName) && medicalrecord.getLastName().equals(this.lastName))
+		for(MedicalrecordsModel medicalrecord:allMedicalRecords) {			
+			if(medicalrecord.getFirstName().equals(this.firstName) && medicalrecord.getLastName().equals(this.lastName))
 				return medicalrecord;
 		}
 		return null;
 		
 	}
+	
+	
+	public static List<PersonsModel> getPersonsForAddress(List<PersonsModel> persons , String address){
+		
+		List<PersonsModel> result = new ArrayList<PersonsModel>();
+		
+		for(PersonsModel person : persons) {
+			if(person.getAddress() == address)
+				result.add(person);
+		}
+		
+		return result;
+	}
+	
+	public static List<PersonsModel> filterChildren(List<PersonsModel> persons){
+		
+		List<PersonsModel> result = new ArrayList<PersonsModel>();
+		
+		for(PersonsModel person : persons) {
+			if(person.getAge() < 18)
+				result.add(person);
+		}
+		
+		return result;
+	}
+	
+	
 	
 	public String getBirthDate() {
 		
@@ -37,12 +64,12 @@ public class PersonsModel {
 		
 	}
 	
-	public String getAge() {
+	public int getAge() {
 		
 		LocalDate localDate = LocalDate.parse(getBirthDate());
 		LocalDate now = LocalDate.now();
-		Period diff = Period.between(now, localDate);
-		return diff.toString();
+		return  Period.between(now, localDate).getYears();
+		
 	}
 	
 	public Set<String> getMedications() {
@@ -101,3 +128,5 @@ public class PersonsModel {
 	}
 
 }
+
+

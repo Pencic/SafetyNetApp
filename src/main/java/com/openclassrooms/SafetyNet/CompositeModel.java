@@ -5,13 +5,33 @@ import java.util.List;
 
 public class CompositeModel {
 	
-	private List<PersonsModel> persons;
-	private List<FirestationModel> firestations;
+	private static List<PersonsModel> persons;
+	private static List<FirestationModel> firestations;
 	private static List<MedicalrecordsModel> medicalrecords;
 	
 	public CompositeModel() {
 		
 	}
+	
+	public List<ChildPersonsModel> getChildrenForAddress(String address){
+		
+		return
+			ChildPersonsModel.fromPersonsModelToChildPersonsModel(
+				PersonsModel.filterChildren(
+					PersonsModel.getPersonsForAddress(getPersons() , address)));		
+	}
+	
+	public List<String> getPhoneNumbersForFirestationJuristiction(int firestationNumber){
+		
+		for(FirestationModel firestation : firestations ) {
+			if(firestation.getStation() == firestationNumber) {
+				return firestation.getPhoneNumbersForThisJuristiction();
+			}
+		}
+		return null;
+		
+	}
+	
 	
 	public List<String> getAddressesForStation(int station) {
 		
@@ -30,12 +50,12 @@ public class CompositeModel {
 		return result;		
 	}
 
-	public List<PersonsModel> getPersons() {
+	public static List<PersonsModel> getPersons() {
 		return persons;
 	}
 
 	public void setPersons(List<PersonsModel> persons) {
-		this.persons = persons;
+		CompositeModel.persons = persons;
 	}
 
 	public List<FirestationModel> getFirestations() {
@@ -43,7 +63,7 @@ public class CompositeModel {
 	}
 
 	public void setFirestations(List<FirestationModel> firestations) {
-		this.firestations = firestations;
+		CompositeModel.firestations = firestations;
 	}
 
 	public static List<MedicalrecordsModel> getMedicalrecords() {
@@ -51,7 +71,7 @@ public class CompositeModel {
 	}
 
 	public void setMedicalrecords(List<MedicalrecordsModel> medicalrecords) {
-		this.medicalrecords = medicalrecords;
+		CompositeModel.medicalrecords = medicalrecords;
 	}
 
 }
